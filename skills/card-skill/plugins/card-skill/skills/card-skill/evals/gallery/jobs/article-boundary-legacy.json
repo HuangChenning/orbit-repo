@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "job_id": "gallery-article-boundary",
+  "publish_target": "article-body",
+  "source": {
+    "kind": "pasted-text",
+    "language": "zh",
+    "label": "《千脑智能》· 杰夫·霍金斯"
+  },
+  "source_units": [
+    {
+      "id": "boundary",
+      "excerpt": "物体模型需要把感知到的特征放在以物体为中心的参考系中；位置让特征成为可预测的结构。"
+    }
+  ],
+  "decision": {
+    "mode": "article-diagram",
+    "tier": "stable",
+    "tone": "technical",
+    "reason": "感觉特征与相对位置汇聚为可预测的物体模型。"
+  },
+  "outputs": [
+    {
+      "id": "boundary",
+      "basename": "article-boundary-legacy.png",
+      "source_unit_ids": [
+        "boundary"
+      ],
+      "transformation": "visualize",
+      "render_contract": {
+        "mode": "article-diagram",
+        "title": "特征必须落在物体坐标里",
+        "formula": "特征与位置共同支持预测",
+        "sentence": "位置让特征成为可预测的结构。",
+        "personal_layout": "convergence",
+        "render_plan": "structure",
+        "structure": {
+          "nodes": [
+            {
+              "id": "feature",
+              "label": "感觉特征"
+            },
+            {
+              "id": "location",
+              "label": "相对位置"
+            },
+            {
+              "id": "model",
+              "label": "物体模型"
+            }
+          ],
+          "relations": [
+            {
+              "from": "feature",
+              "to": "model",
+              "label": "共同支持"
+            },
+            {
+              "from": "location",
+              "to": "model",
+              "label": "共同支持"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

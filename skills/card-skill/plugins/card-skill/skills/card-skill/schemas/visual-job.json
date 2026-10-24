@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/KKenny0/card-skill/schemas/visual-job.json",
+  "title": "Card Skill Visual Job v1/v2/v3",
+  "description": "Host-owned planning contract. Runtime validation limits the serialized job to 4 MiB, each materialized render contract to the card CLI's 2 MiB input limit, aggregate rendered artifacts to 20, and unique poster media across the whole job to 32 MiB so checked HTML remains publishable within the candidate budget.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "job_id", "publish_target", "source", "source_units", "decision", "outputs"],
+  "$defs": {
+    "visual_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["core_message", "content_type", "argument_structure", "visual_metaphor", "layout_strategy", "visual_hierarchy", "avoid_patterns"],
+      "properties": {
+        "core_message": { "type": "string", "minLength": 1, "maxLength": 280 },
+        "content_type": { "enum": ["idea", "argument", "mechanism", "comparison", "story", "timeline", "data", "system"] },
+        "argument_structure": { "enum": ["single-claim", "linear-argument", "cause-effect", "compare-contrast", "sequence", "hierarchy", "network", "conflict-turn", "reflective-arc"] },
+        "visual_metaphor": { "type": ["string", "null"], "minLength": 1, "maxLength": 280 },
+        "layout_strategy": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "visual_hierarchy": { "type": "array", "minItems": 1, "maxItems": 5, "items": { "type": "string", "minLength": 1, "maxLength": 160 } },
+        "avoid_patterns": { "type": "array", "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 160 } }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "strength", "freshness"],
+      "properties": {
+        "kind": { "enum": ["claim", "quote", "command", "interface", "output", "benchmark", "architecture", "case", "hero"] },
+        "strength": { "enum": ["primary", "supporting", "unusable"] },
+        "freshness": { "enum": ["current", "stale", "unknown"] },
+        "reason": { "type": "string", "minLength": 1, "maxLength": 200 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "anyOf": [
+              { "properties": { "strength": { "const": "unusable" } }, "required": ["strength"] },
+              { "properties": { "freshness": { "enum": ["stale", "unknown"] } }, "required": ["freshness"] }
+            ]
+          },
+          "then": { "required": ["reason"] }
+        }
+        ,
+        {
+          "not": {
+            "properties": {
+              "strength": { "const": "primary" },
+              "freshness": { "const": "unknown" }
+            },
+            "required": ["strength", "freshness"]
+          }
+        }
+      ]
+    },
+    "artifact_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_index", "id", "basename", "role", "source_unit_ids", "transformation", "visual_plan"],
+      "properties": {
+        "artifact_index": { "type": "integer", "minimum": 1, "maximum": 20, "description": "One-based position in this output's artifacts array, restarting at 1 for every output. Two single-artifact outputs both use 1; never number across outputs." },
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+        "basename": { "type": "string", "maxLength": 200, "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.png$" },
+        "role": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+        "source_unit_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+        "transformation": { "enum": ["preserve", "compress", "rewrite", "visualize"] },
+        "visual_plan": { "$ref": "#/$defs/visual_plan" }
+      }
+    }
+  },
+  "properties": {
+    "schema_version": { "enum": [1, 2, 3] },
+    "job_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+    "publish_target": { "enum": ["wechat-cover", "blog-hero", "article-body", "social-single", "social-series", "reading-notes", "long-read", "whiteboard"] },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "language"],
+      "properties": {
+        "kind": { "enum": ["pasted-text", "url", "file", "normalized-adapter"] },
+        "label": { "type": "string", "maxLength": 160 },
+        "language": { "enum": ["zh", "en", "mixed"] },
+        "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "source_units": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "label": { "type": "string", "maxLength": 160 },
+          "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "excerpt": { "type": "string", "maxLength": 500, "pattern": "^(?!.*[\\p{Cc}\\p{Cs}\\p{Default_Ignorable_Code_Point}])[\\s\\S]*$" },
+          "evidence": { "$ref": "#/$defs/evidence" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "evidence": {} }, "required": ["evidence"] },
+            "then": {
+              "anyOf": [
+                { "required": ["digest"] },
+                { "required": ["excerpt"], "properties": { "excerpt": { "minLength": 1, "pattern": "\\S" } } }
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "evidence": {
+                  "properties": { "kind": { "enum": ["command", "quote"] } },
+                  "required": ["kind"]
+                }
+              },
+              "required": ["evidence"]
+            },
+            "then": {
+              "required": ["excerpt"],
+              "properties": { "excerpt": { "minLength": 1, "pattern": "^(?!.*(?:  |[^\\S ]|[\\p{Cc}\\p{Cf}])).*\\S.*$" } }
+            }
+          }
+        ]
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "tier", "reason"],
+      "properties": {
+        "mode": { "enum": ["big", "long", "whiteboard", "poster", "editorial-image", "article-diagram", "infograph", "comic", "sketchnote", "mixed"] },
+        "tier": { "enum": ["stable", "studio"] },
+        "reason": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "tone": { "enum": ["reflective", "sharp", "warm", "technical"], "description": "Kenny Style house color tone. It changes palette tokens only, never typography, geometry, spacing, layout, metaphor, or content structure." },
+        "selection_source": { "enum": ["taxonomy", "user-override"] },
+        "selection_summary": { "type": "string", "maxLength": 500 },
+        "visual_risks": { "type": "array", "maxItems": 10, "items": { "type": "string", "maxLength": 200 } }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "render_contract"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+          "basename": { "type": "string", "maxLength": 200, "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.png$" },
+          "source_unit_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "transformation": { "enum": ["preserve", "compress", "rewrite", "visualize"] },
+          "section": { "type": "string", "maxLength": 160 },
+          "visual_plan": { "$ref": "#/$defs/visual_plan" },
+          "artifacts": { "type": "array", "minItems": 1, "maxItems": 20, "items": { "$ref": "#/$defs/artifact_plan" } },
+          "cover_adaptation_of": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$", "description": "V3 wechat-cover only. References an earlier original output, with at most one adaptation and no chains. Both outputs must have one role=cover artifact and editorial-image use=cover (or omitted), one explicit wechat-cover aspect and one square. Source unit ID sets, transformation, visual plan core_message/content_type/argument_structure/visual_metaphor, and contract title/subtitle/kicker/source/brand_name/logo/design/editorial_tone must match. Only this validated pair may reuse primary evidence; layout and composition may differ. Cross-output constraints are enforced at runtime." },
+          "render_contract": { "type": "object" }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "outputs": { "contains": { "required": ["cover_adaptation_of"] } } },
+        "required": ["outputs"]
+      },
+      "then": {
+        "properties": {
+          "schema_version": { "const": 3 },
+          "publish_target": { "const": "wechat-cover" },
+          "outputs": {
+            "items": {
+              "if": { "required": ["cover_adaptation_of"] },
+              "then": {
+                "properties": {
+                  "artifacts": { "minItems": 1, "maxItems": 1, "items": { "properties": { "role": { "const": "cover" } } } },
+                  "render_contract": {
+                    "required": ["mode", "aspect"],
+                    "properties": {
+                      "mode": { "const": "editorial-image" },
+                      "use": { "const": "cover" },
+                      "aspect": { "enum": ["wechat-cover", "square"] }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "schema_version": { "const": 3 } }, "required": ["schema_version"] },
+      "then": {
+        "properties": {
+          "source_units": { "items": { "required": ["evidence"] } },
+          "decision": { "required": ["mode", "tier", "reason", "selection_source"] },
+          "outputs": {
+            "items": {
+              "required": ["id", "artifacts", "render_contract"],
+              "not": {
+                "anyOf": [
+                  { "required": ["basename"] },
+                  { "required": ["source_unit_ids"] },
+                  { "required": ["transformation"] },
+                  { "required": ["section"] },
+                  { "required": ["visual_plan"] }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "source_units": { "items": { "not": { "required": ["evidence"] } } },
+          "outputs": {
+            "items": {
+              "required": ["id", "basename", "source_unit_ids", "transformation", "render_contract"],
+              "not": { "anyOf": [{ "required": ["artifacts"] }, { "required": ["cover_adaptation_of"] }] }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "schema_version": { "const": 2 } }, "required": ["schema_version"] },
+      "then": {
+        "properties": {
+          "decision": { "required": ["mode", "tier", "reason", "selection_source"] },
+          "outputs": { "items": { "required": ["visual_plan"] } }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "schema_version": { "const": 1 } }, "required": ["schema_version"] },
+      "then": {
+        "properties": {
+          "decision": { "not": { "required": ["selection_source"] } },
+          "outputs": { "items": { "not": { "required": ["visual_plan"] } } }
+        }
+      }
+    }
+  ]
+}

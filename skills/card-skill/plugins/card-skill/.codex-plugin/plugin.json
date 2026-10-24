@@ -1,0 +1,51 @@
+{
+  "name": "card-skill",
+  "version": "0.21.0",
+  "description": "Open-source agent skill that turns articles, notes, and arguments into checked publish-ready PNG cards: WeChat/blog covers, social posters, whiteboards, article diagrams, with optional Codex direction preview.",
+  "author": {
+    "name": "KKenny0",
+    "url": "https://github.com/KKenny0"
+  },
+  "homepage": "https://github.com/KKenny0/card-skill",
+  "repository": "https://github.com/KKenny0/card-skill",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "claude-code",
+    "agent-skills",
+    "skills",
+    "cards",
+    "poster",
+    "infographic",
+    "whiteboard",
+    "wechat",
+    "wechat-cover",
+    "png",
+    "editorial",
+    "editorial-image",
+    "article-diagram",
+    "visualization",
+    "quiet-paper"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "card-skill",
+    "shortDescription": "Turn text into checked publish-ready PNG cards",
+    "longDescription": "card-skill is an open-source coding-agent skill with Quiet Paper renderers, templates, fonts, schemas, and output checks. It turns articles, notes, arguments, stories, and explicitly requested WeChat Reading highlights or statistics into polished PNG covers, social cards, whiteboards, and article diagrams. Not a website builder or UI kit. In supported Codex desktop sessions, it can optionally show a small direction preview before rendering.",
+    "developerName": "KKenny0",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://github.com/KKenny0/card-skill",
+    "defaultPrompt": [
+      "Turn this article into a WeChat cover image",
+      "Make these notes into a social card set",
+      "Turn my WeChat Reading highlights and thoughts into a sourced card set",
+      "Make my WeChat Reading statistics into a monthly reading report",
+      "Draw this argument as a whiteboard card",
+      "Explain the key relationships in this article with personal-style diagrams"
+    ],
+    "brandColor": "#9B6048"
+  }
+}

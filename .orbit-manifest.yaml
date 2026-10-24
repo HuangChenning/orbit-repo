@@ -1,0 +1,476 @@
+version: "1.0"
+dependencies:
+    - name: Superpowers
+      source: https://github.com/obra/superpowers.git
+      version: main
+      commit: 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b
+      subdir: skills
+      mirror_dir: skills/superpowers
+    - name: architecture-diagram
+      source: https://github.com/Cocoon-AI/architecture-diagram-generator.git
+      version: main
+      commit: 4b9087d55268c79a935105439dbcd37b630fc3f3
+      subdir: architecture-diagram
+      mirror_dir: skills/architecture-diagram
+    - name: awesome-design-md
+      source: https://github.com/VoltAgent/awesome-design-md.git
+      version: main
+      commit: 3b605329240ce735b510037cca322f1831fdd7f8
+      subdir: design-md
+      mirror_dir: skills/awesome-design-md
+    - name: beautify-readme
+      source: https://github.com/HuangChenning/beautify-readme.git
+      version: main
+      commit: 26da7b0b6a34ede8e3a1352b9f70cb7c02c134f0
+      subdir: skills/beautify-readme
+      mirror_dir: skills/beautify-readme
+    - name: book-to-skill
+      source: https://github.com/virgiliojr94/book-to-skill.git
+      version: master
+      commit: a24e62f4d8caf2ee433f6e48d9073800f56f906e
+      subdir: .
+      mirror_dir: skills/book-to-skill
+    - name: cangjie-skill
+      source: https://github.com/kangarooking/cangjie-skill.git
+      version: main
+      commit: a28de55ba881b9928956a55048f743f7a9e3b23e
+      subdir: .
+      mirror_dir: skills/cangjie-skill
+    - name: canvas-design
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/canvas-design
+      mirror_dir: skills/canvas-design
+    - name: card-skill
+      source: https://github.com/KKenny0/card-skill.git
+      version: main
+      commit: 0788585f2eefa369c8612203bcae281b0b3032a0
+      subdir: .
+      mirror_dir: skills/card-skill
+    - name: claude-api
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/claude-api
+      mirror_dir: skills/claude-api
+    - name: docx
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/docx
+      mirror_dir: skills/docx
+    - name: eli5
+      source: https://github.com/DreambigOu/ELI5.git
+      version: main
+      commit: a766623b062331fdde53467001379b4ddf3acc2f
+      subdir: skills/eli5
+      mirror_dir: skills/eli5
+    - name: frontend-design
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/frontend-design
+      mirror_dir: skills/frontend-design
+    - name: huashu-design
+      source: https://github.com/alchaincyf/huashu-design.git
+      version: master
+      commit: 4fc7bfdbd5ec3fa2d43ce7a6433de60976a5e4b1
+      subdir: .
+      mirror_dir: skills/huashu-design
+    - name: hub-scripts
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: scripts
+      mirror_dir: scripts
+    - name: hub-skills-adk-cheatsheet
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/adk-cheatsheet
+      mirror_dir: skills/adk-cheatsheet
+    - name: hub-skills-adk-deploy-guide
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/adk-deploy-guide
+      mirror_dir: skills/adk-deploy-guide
+    - name: hub-skills-adk-dev-guide
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/adk-dev-guide
+      mirror_dir: skills/adk-dev-guide
+    - name: hub-skills-adk-eval-guide
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/adk-eval-guide
+      mirror_dir: skills/adk-eval-guide
+    - name: hub-skills-adk-observability-guide
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/adk-observability-guide
+      mirror_dir: skills/adk-observability-guide
+    - name: hub-skills-adk-scaffold
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/adk-scaffold
+      mirror_dir: skills/adk-scaffold
+    - name: hub-skills-agents
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/.agents
+      mirror_dir: skills/.agents
+    - name: hub-skills-anthropic-diagram
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/anthropic-diagram
+      mirror_dir: skills/anthropic-diagram
+    - name: hub-skills-archimate
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/archimate
+      mirror_dir: skills/archimate
+    - name: hub-skills-architecture
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/architecture
+      mirror_dir: skills/architecture
+    - name: hub-skills-beautify-github-readme
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/beautify-github-readme
+      mirror_dir: skills/beautify-github-readme
+    - name: hub-skills-bpmn
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/bpmn
+      mirror_dir: skills/bpmn
+    - name: hub-skills-canvas
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/canvas
+      mirror_dir: skills/canvas
+    - name: hub-skills-cloud
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/cloud
+      mirror_dir: skills/cloud
+    - name: hub-skills-code-simplifier
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/code-simplifier
+      mirror_dir: skills/code-simplifier
+    - name: hub-skills-data-analytics
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/data-analytics
+      mirror_dir: skills/data-analytics
+    - name: hub-skills-drawio
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/drawio
+      mirror_dir: skills/drawio
+    - name: hub-skills-find-skills
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/find-skills
+      mirror_dir: skills/find-skills
+    - name: hub-skills-gemini-code-assist-check
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/gemini-code-assist-check
+      mirror_dir: skills/gemini-code-assist-check
+    - name: hub-skills-git-commit-message
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/git-commit-message
+      mirror_dir: skills/git-commit-message
+    - name: hub-skills-git-pr-cleanup
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/git-pr-cleanup
+      mirror_dir: skills/git-pr-cleanup
+    - name: hub-skills-git-pr-creator
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/git-pr-creator
+      mirror_dir: skills/git-pr-creator
+    - name: hub-skills-git-release
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/git-release
+      mirror_dir: skills/git-release
+    - name: hub-skills-git-upstream-sync
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/git-upstream-sync
+      mirror_dir: skills/git-upstream-sync
+    - name: hub-skills-github-actions-debugging
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/github-actions-debugging
+      mirror_dir: skills/github-actions-debugging
+    - name: hub-skills-github-issues
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/github-issues
+      mirror_dir: skills/github-issues
+    - name: hub-skills-github-pr-reply-advisor
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/github-pr-reply-advisor
+      mirror_dir: skills/github-pr-reply-advisor
+    - name: hub-skills-graphviz
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/graphviz
+      mirror_dir: skills/graphviz
+    - name: hub-skills-infocard
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/infocard
+      mirror_dir: skills/infocard
+    - name: hub-skills-infographic
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/infographic
+      mirror_dir: skills/infographic
+    - name: hub-skills-iot
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/iot
+      mirror_dir: skills/iot
+    - name: hub-skills-low-hour-report
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/low-hour-report
+      mirror_dir: skills/low-hour-report
+    - name: hub-skills-mes-weekly-report
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/mes-weekly-report
+      mirror_dir: skills/mes-weekly-report
+    - name: hub-skills-mindmap
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/mindmap
+      mirror_dir: skills/mindmap
+    - name: hub-skills-network
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/network
+      mirror_dir: skills/network
+    - name: hub-skills-openai-docs
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/openai-docs
+      mirror_dir: skills/openai-docs
+    - name: hub-skills-planning-with-files
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/planning-with-files
+      mirror_dir: skills/planning-with-files
+    - name: hub-skills-pr-comments-analyzer
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/pr-comments-analyzer
+      mirror_dir: skills/pr-comments-analyzer
+    - name: hub-skills-receiving-code-review
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/receiving-code-review
+      mirror_dir: skills/receiving-code-review
+    - name: hub-skills-references
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/references
+      mirror_dir: skills/references
+    - name: hub-skills-requesting-code-review
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/requesting-code-review
+      mirror_dir: skills/requesting-code-review
+    - name: hub-skills-security
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/security
+      mirror_dir: skills/security
+    - name: hub-skills-skills-discovery
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/skills-discovery
+      mirror_dir: skills/skills-discovery
+    - name: hub-skills-synced
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/synced
+      mirror_dir: skills/synced
+    - name: hub-skills-system
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/.system
+      mirror_dir: skills/.system
+    - name: hub-skills-tmeet-skill
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/tmeet-skill
+      mirror_dir: skills/tmeet-skill
+    - name: hub-skills-uml
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/uml
+      mirror_dir: skills/uml
+    - name: hub-skills-vega
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/vega
+      mirror_dir: skills/vega
+    - name: hub-skills-wecom-unified
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/wecom-unified
+      mirror_dir: skills/wecom-unified
+    - name: hub-skills-xlsx
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: skills/xlsx
+      mirror_dir: skills/xlsx
+    - name: hub-workflows
+      source: https://github.com/HuangChenning/skills_repo_axon.git
+      version: refs/heads/master
+      commit: c939208e8df476b6e0456b5eae0a82d6bccb0441
+      subdir: workflows
+      mirror_dir: workflows
+    - name: humanlayer-skills
+      source: https://github.com/humanlayer/skills.git
+      version: main
+      commit: 653b6411c1f70c275a18e37673b042ff99f67ceb
+      subdir: plugins
+      mirror_dir: skills/humanlayer-skills
+    - name: imagegen
+      source: https://github.com/openai/codex.git
+      version: main
+      commit: 970111f6cb62cc02fe36a82ea7d71b37a2889c97
+      subdir: codex-rs/skills/src/assets/samples/imagegen
+      mirror_dir: skills/imagegen
+    - name: linear
+      source: https://github.com/openai/skills.git
+      version: main
+      commit: 49f948faa9258a0c61caceaf225e179651397431
+      subdir: skills/.curated/linear
+      mirror_dir: skills/linear
+    - name: mattpocock-skills
+      source: https://github.com/mattpocock/skills.git
+      version: main
+      commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+      subdir: skills
+      mirror_dir: skills/mattpocock-skills
+    - name: mcp-builder
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/mcp-builder
+      mirror_dir: skills/mcp-builder
+    - name: mes-cli-terminal
+      source: https://github.com/enmotech/mes-cli-skills.git
+      version: main
+      commit: af96226f2c5eaf0b734111a18f7d9749d162a3fd
+      subdir: skills/mes-cli-terminal
+      mirror_dir: skills/mes-cli-terminal
+    - name: mopheus-skills
+      source: https://github.com/enmotech/mopheus-skills.git
+      version: main
+      commit: 652c170b4d766309280bfc0448096cbd88880edf
+      subdir: skills
+      mirror_dir: skills/mopheus-skills
+    - name: obsidian-skills
+      source: https://github.com/kepano/obsidian-skills.git
+      version: main
+      commit: 3ccff5338ea700537839b21900aa5358a0402c98
+      subdir: skills
+      mirror_dir: skills/obsidian-skills
+    - name: openai-docs
+      source: https://github.com/openai/skills.git
+      version: main
+      commit: 49f948faa9258a0c61caceaf225e179651397431
+      subdir: skills/.curated
+      mirror_dir: skills/openai
+    - name: pdf
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/pdf
+      mirror_dir: skills/pdf
+    - name: pptx
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/pptx
+      mirror_dir: skills/pptx
+    - name: skill-creator
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/skill-creator
+      mirror_dir: skills/skill-creator
+    - name: wecom-cli
+      source: https://github.com/WecomTeam/wecom-cli.git
+      version: main
+      commit: 55785fa0a5c922279533a5b5a836b44b56f65ce7
+      subdir: skills
+      mirror_dir: skills/wecom-cli
+    - name: xlsx
+      source: https://github.com/anthropics/skills.git
+      version: main
+      commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+      subdir: skills/xlsx
+      mirror_dir: skills/slsx

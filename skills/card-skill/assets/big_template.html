@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=1080"><title>Big · 一句暂记</title>
+<style>
+@import url('file://{{FONT_BASE}}/local-fonts.css');
+@font-face{font-family:'XiangcuiDengcusong';src:url('file://{{FONT_BASE}}/XiangcuiDengcusong.ttf') format('truetype');font-display:block}
+:root{--bg: #f4f1eb;--accent: #87463f;--ink: #282722;--ink-muted: #69645e;--surface-1: #f4f1eb;--hairline: #d8d2c8;--radius: 0px;}
+*{box-sizing:border-box}html,body{margin:0;padding:0;width:1080px;background:var(--bg)}
+.card{position:relative;width:1080px;height:1440px;background:var(--bg);overflow:hidden}
+.content{height:100%;padding:100px 88px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left}
+.rule{width:62px;height:4px;background:var(--accent);margin:0 0 66px;flex-shrink:0}
+.phrase{font-family:'XiangcuiDengcusong','DM Serif Display',serif;line-height:1.28;letter-spacing:0;color:var(--ink);white-space:nowrap;width:100%;flex-shrink:0}
+.reading-line{display:block;white-space:nowrap}
+.accent{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:13px}
+.attribution{font-family:'DM Sans','XiangcuiDengcusong',serif;font-size:36px;line-height:1.6;letter-spacing:0;color:var(--ink-muted);margin-top:80px;max-width:904px;white-space:pre-line;text-wrap:balance;flex-shrink:0}
+.attribution:empty{display:none}
+.colophon{position:absolute;left:88px;right:88px;bottom:34px;display:flex;align-items:center;gap:12px;font:28px/1.4 'DM Sans','XiangcuiDengcusong',serif;color:var(--ink-muted)}
+.colophon img{width:32px;height:32px;object-fit:contain}
+</style></head><body><div class="card" data-card-mode="big"><div class="content"><div class="rule"></div><div class="phrase" style="font-size: {{FONT_SIZE}};">{{PHRASE_HTML}}</div><div class="attribution">{{ATTRIBUTION}}</div></div><div class="colophon"><img src="{{LOGO}}" alt="logo"><span>{{BRAND_NAME}}</span></div></div></body></html>
